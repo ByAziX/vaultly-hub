@@ -113,7 +113,7 @@ export default function ProjectsSection() {
                   display: "flex",
                   justifyContent: "space-between",
                   padding: "1rem 1.5rem",
-                  backgroundColor: mode === "light" ? "#f5f5f5" : "#2a2a2a",
+                  backgroundColor: mode === "light" ? "#ffffff" : "#2a2a2a",
                 }}
               >
                 <Button
