@@ -12,19 +12,19 @@ export default function ProjectsSection() {
     {
       title: "Marketplace",
       description: "Discover and explore a variety of products and services.",
-      logo: "/marketplace-icon.svg",
+      logo: "/coming soon.gif",
       link: "/marketplace",
     },
     {
       title: "Vault",
       description: "Secure your data with our cutting-edge vault technology.",
-      logo: "/vault-icon.svg",
+      logo: "/coming soon.gif",
       link: "/vault",
     },
     {
       title: "Analytics",
       description: "Track and analyze your data with powerful tools.",
-      logo: "/analytics-icon.svg",
+      logo: "/coming soon.gif",
       link: "/analytics",
     },
   ];
@@ -82,8 +82,8 @@ export default function ProjectsSection() {
                   src={project.logo}
                   alt={project.title}
                   sx={{
-                    width: 70,
-                    height: 70,
+                    width: 90,
+                    height: 90,
                     border: "1px solid #ffffff",
                   }}
                 />
