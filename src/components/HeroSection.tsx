@@ -160,38 +160,53 @@ export default function HeroSection() {
 
             {/* Robot avec animation */}
             <Box
-              sx={{
-                position: "absolute",
-                top: "50%",
-                right: "50%",
-                transform: "translate(50%, -50%)",
-                zIndex: 1,
-                animation: "float 3s ease-in-out infinite",
-              }}
-            >
-              <Image
-                src="/Vaultly.svg"
-                alt="Robot"
-                width={500}
-                height={500}
-                style={{ objectFit: "contain" }}
-              />
-            </Box>
+  sx={{
+    position: "absolute",
+    top: "50%",
+    right: "50%",
+    transform: "translate(50%, -50%)",
+    zIndex: 1,
+    animation: `
+      float 3s ease-in-out infinite${
+        mode === "dark" ? ", pulseBrightness 10s cubic-bezier(0.33, 0.33, 0.66, 0.66) infinite 1s" : ""
+      }`, // pulseBrightness ajouté uniquement en mode sombre
+  }}
+>
+  <Image
+    src="/Vaultly.svg"
+    alt="Robot"
+    width={500}
+    height={500}
+    style={{ objectFit: "contain" }}
+  />
+</Box>
 
-            {/* Animation CSS */}
-            <style jsx>{`
-              @keyframes float {
-                0% {
-                  transform: translate(50%, -50%) translateY(0);
-                }
-                50% {
-                  transform: translate(50%, -50%) translateY(-10px);
-                }
-                100% {
-                  transform: translate(50%, -50%) translateY(0);
-                }
-              }
-            `}</style>
+{/* Animation CSS */}
+<style jsx>{`
+  @keyframes float {
+    0% {
+      transform: translate(50%, -50%) translateY(0);
+    }
+    50% {
+      transform: translate(50%, -50%) translateY(-10px);
+    }
+    100% {
+      transform: translate(50%, -50%) translateY(0);
+    }
+  }
+
+  @keyframes pulseBrightness {
+    0% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(2); /* Augmentation de la luminosité */
+    }
+    100% {
+      filter: brightness(1); /* Retour à la luminosité initiale */
+    }
+  }
+`}</style>
           </Grid>
         )}
       </Grid>

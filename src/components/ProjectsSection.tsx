@@ -32,7 +32,7 @@ export default function ProjectsSection() {
   return (
     <Box
       sx={{
-        backgroundColor: mode === "light" ? "#f9f9f9" : "#121212",
+        backgroundColor: mode === "light" ? "#f9f9f9" : "#000000",
         color: mode === "light" ? "#000000" : "#ffffff",
         padding: "4rem 2rem",
         minHeight: "100vh",
@@ -75,7 +75,7 @@ export default function ProjectsSection() {
                   justifyContent: "center",
                   alignItems: "center",
                   padding: "1.5rem",
-                  background: `linear-gradient(135deg, #00d4ff, ${mode === "light" ? "#ffffff" : "#2c2c2c"})`,
+                  background: `linear-gradient(135deg, #6a98c9, ${mode === "light" ? "#0cc0df" : "#000000"})`,
                 }}
               >
                 <Avatar
@@ -84,7 +84,7 @@ export default function ProjectsSection() {
                   sx={{
                     width: 70,
                     height: 70,
-                    border: "4px solid #ffffff",
+                    border: "1px solid #ffffff",
                   }}
                 />
               </Box>
@@ -132,7 +132,7 @@ export default function ProjectsSection() {
                 <Button
                   variant="contained"
                   sx={{
-                    backgroundColor: "#00d4ff",
+                    background: `linear-gradient(160deg, #6a98c9, ${mode === "light" ? "#0cc0df" : "#000000"})`,
                     color: "#ffffff",
                     textTransform: "none",
                     fontWeight: "bold",
