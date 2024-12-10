@@ -39,7 +39,7 @@ export default function HeroSection() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: isMobile ? "center" : "flex-start", // Centre sur mobile, aligné à gauche sur desktop
+            alignItems: isMobile ? "center" : "flex-start",
             height: "100vh",
             padding: isMobile ? "2rem" : "4rem",
           }}
@@ -48,19 +48,19 @@ export default function HeroSection() {
             variant="h2"
             sx={{
               fontWeight: "bold",
-              fontSize: isMobile ? "3rem" : "6rem", // Taille ajustée pour mobile
+              fontSize: isMobile ? "3rem" : "6rem",
               lineHeight: 1.2,
-              textAlign: isMobile ? "center" : "left", // Texte centré sur mobile
+              textAlign: isMobile ? "center" : "left",
               marginBottom: "1.5rem",
-              marginLeft: isMobile ? "0" : "5%", // Plus à gauche sur desktop
+              marginLeft: isMobile ? "0" : "5%",
             }}
           >
             Ready to make{" "}
             <span
               style={{
-                display: "inline-block", // Pour aligner correctement
+                display: "inline-block",
                 color: "#6a98c9",
-                fontSize: isMobile ? "3.5rem" : "6.5rem", // Plus grand pour "some noise?"
+                fontSize: isMobile ? "3.5rem" : "6.5rem",
               }}
             >
               some noise?
@@ -73,7 +73,7 @@ export default function HeroSection() {
               flexDirection: isMobile ? "column" : "row",
               gap: isMobile ? "1rem" : "2rem",
               alignItems: isMobile ? "center" : "flex-start",
-              marginLeft: isMobile ? "0" : "5%", // Boutons alignés avec le texte
+              marginLeft: isMobile ? "0" : "5%",
             }}
           >
             <Button
@@ -81,7 +81,7 @@ export default function HeroSection() {
               sx={{
                 borderColor: mode === "light" ? "#000000" : "#ffffff",
                 color: mode === "light" ? "#000000" : "#ffffff",
-                fontSize: isMobile ? "0.9rem" : "1.2rem", // Taille ajustée pour mobile
+                fontSize: isMobile ? "0.9rem" : "1.2rem",
                 padding: isMobile ? "0.8rem 1.5rem" : "1rem 2rem",
                 textTransform: "none",
                 display: "flex",
@@ -158,14 +158,15 @@ export default function HeroSection() {
               </Box>
             )}
 
-            {/* Robot visible dans tous les modes */}
+            {/* Robot avec animation */}
             <Box
               sx={{
                 position: "absolute",
                 top: "50%",
                 right: "50%",
                 transform: "translate(50%, -50%)",
-                zIndex: 1, // Place le robot au-dessus de la vidéo
+                zIndex: 1,
+                animation: "float 3s ease-in-out infinite",
               }}
             >
               <Image
@@ -176,6 +177,21 @@ export default function HeroSection() {
                 style={{ objectFit: "contain" }}
               />
             </Box>
+
+            {/* Animation CSS */}
+            <style jsx>{`
+              @keyframes float {
+                0% {
+                  transform: translate(50%, -50%) translateY(0);
+                }
+                50% {
+                  transform: translate(50%, -50%) translateY(-10px);
+                }
+                100% {
+                  transform: translate(50%, -50%) translateY(0);
+                }
+              }
+            `}</style>
           </Grid>
         )}
       </Grid>
