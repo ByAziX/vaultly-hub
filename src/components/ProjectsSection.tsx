@@ -32,7 +32,7 @@ export default function ProjectsSection() {
   return (
     <Box
       sx={{
-        backgroundColor: mode === "light" ? "#f9f9f9" : "#000000",
+        backgroundColor: mode === "light" ? "#ffffff" : "#000000",
         color: mode === "light" ? "#000000" : "#ffffff",
         padding: "4rem 2rem",
         minHeight: "100vh",
