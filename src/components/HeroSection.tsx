@@ -14,105 +14,80 @@ export default function HeroSection() {
   return (
     <Box
       sx={{
-        position: "relative", // Permet de superposer les éléments
-        minHeight: "100vh", // Prend tout l'écran
-        overflow: "hidden", // Cache les débordements
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: mode === "light" ? "#000000" : "#ffffff", // Couleur du texte
-        padding: 4,
+        position: "relative",
+        minHeight: "100vh",
+        overflow: "hidden",
+        color: mode === "light" ? "#000000" : "#ffffff",
+        padding: 0,
+        margin: 0,
+        backgroundImage:
+          mode === "light"
+            ? "url('/background-blanc.png')" // Fond unique en mode clair
+            : "url('/background-noir.png')", // Pas de fond supplémentaire en mode sombre
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Arrière-plan */}
-      {isMobile ? (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundImage:
-              mode === "dark"
-                ? "url('/background-noir.png')" // Image pour le fond noir
-                : "url('/background-blanc.png')", // Image pour le fond blanc
-            backgroundSize: "cover", // Recouvre tout le conteneur
-            backgroundPosition: "center", // Centre l'image
-            backgroundRepeat: "no-repeat", // Pas de répétition
-            zIndex: -1, // Place l'image derrière les autres éléments
-          }}
-        />
-      ) : (
-        mode === "dark" ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover", // Recouvre tout le conteneur
-              zIndex: -1, // Place la vidéo derrière les autres éléments
-            }}
-          >
-            <source src="/background-dark-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <Box
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundImage: "url('/background-blanc.png')", // Image pour le mode clair
-              backgroundSize: "cover", // Recouvre tout le conteneur
-              backgroundPosition: "center", // Centre l'image
-              backgroundRepeat: "no-repeat", // Pas de répétition
-              zIndex: -1, // Place l'image derrière les autres éléments
-            }}
-          />
-        )
-      )}
-
-      {/* Contenu */}
-      <Grid container spacing={2} alignItems="center">
+      <Grid container sx={{ height: "100%" }}>
         {/* Section Gauche : Texte et Boutons */}
-        <Grid item xs={12} md={6}>
-          {/* Texte principal */}
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: isMobile ? "center" : "flex-start", // Centre sur mobile, aligné à gauche sur desktop
+            height: "100vh",
+            padding: isMobile ? "2rem" : "4rem",
+          }}
+        >
           <Typography
             variant="h2"
             sx={{
               fontWeight: "bold",
-              fontSize: isMobile ? "3.5rem" : "6rem", // Taille réduite sur mobile
+              fontSize: isMobile ? "3rem" : "5rem", // Taille ajustée pour mobile
               lineHeight: 1.2,
-              marginBottom: 4,
+              textAlign: isMobile ? "center" : "left", // Texte centré sur mobile
+              marginBottom: "1.5rem",
+              marginLeft: isMobile ? "0" : "5%", // Plus à gauche sur desktop
             }}
           >
-            Ready to make <br />
-            <span style={{ color: "#6a98c9", fontSize: isMobile ? "4rem" : "6.5rem" }}>some noise?</span>
+            Ready to make{" "}
+            <span
+              style={{
+                display: "inline-block", // Pour aligner correctement
+                color: "#6a98c9",
+                fontSize: isMobile ? "3.5rem" : "5.5rem", // Plus grand pour "some noise?"
+              }}
+            >
+              some noise?
+            </span>
           </Typography>
 
-          {/* Boutons */}
-          <Box display="flex" gap={3} flexDirection={isMobile ? "column" : "row"}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              gap: isMobile ? "1rem" : "2rem",
+              alignItems: isMobile ? "center" : "flex-start",
+              marginLeft: isMobile ? "0" : "5%", // Boutons alignés avec le texte
+            }}
+          >
             <Button
               variant="outlined"
               sx={{
                 borderColor: mode === "light" ? "#000000" : "#ffffff",
                 color: mode === "light" ? "#000000" : "#ffffff",
-                fontSize: isMobile ? "1rem" : "1.5rem", // Taille réduite sur mobile
-                padding: isMobile ? "10px 20px" : "15px 30px", // Padding réduit sur mobile
+                fontSize: isMobile ? "0.9rem" : "1.2rem", // Taille ajustée pour mobile
+                padding: isMobile ? "0.8rem 1.5rem" : "1rem 2rem",
                 textTransform: "none",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: 1,
+                gap: "0.5rem",
                 "&:hover": {
                   borderColor: "#00d4ff",
                   color: "#00d4ff",
@@ -120,53 +95,84 @@ export default function HeroSection() {
               }}
             >
               <span>Explore</span>
-              <KeyboardArrowDownIcon sx={{ fontSize: isMobile ? "1.5rem" : "2rem" }} /> {/* Taille réduite sur mobile */}
+              <KeyboardArrowDownIcon sx={{ fontSize: isMobile ? "1.2rem" : "1.5rem" }} />
             </Button>
             <Button
               variant="outlined"
               sx={{
                 borderColor: mode === "light" ? "#000000" : "#ffffff",
                 color: mode === "light" ? "#000000" : "#ffffff",
-                fontSize: isMobile ? "1rem" : "1.5rem", // Taille réduite sur mobile
-                padding: isMobile ? "10px 20px" : "15px 30px", // Padding réduit sur mobile
+                fontSize: isMobile ? "0.9rem" : "1.2rem",
+                padding: isMobile ? "0.8rem 1.5rem" : "1rem 2rem",
                 textTransform: "none",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: 1,
+                gap: "0.5rem",
                 "&:hover": { borderColor: "#00d4ff", color: "#00d4ff" },
               }}
             >
               <span>Marketplace</span>
-              <ArrowForwardIcon sx={{ fontSize: isMobile ? "1.5rem" : "2rem" }} /> {/* Taille réduite sur mobile */}
+              <ArrowForwardIcon sx={{ fontSize: isMobile ? "1.2rem" : "1.5rem" }} />
             </Button>
           </Box>
         </Grid>
 
-        {/* Section Droite : Image du Robot */}
-        {!isMobile && ( // Masquer le robot sur mobile
+        {/* Section Droite : Vidéo et Robot */}
+        {!isMobile && (
           <Grid
             item
             xs={12}
             md={6}
             sx={{
-              textAlign: "center",
               position: "relative",
+              height: "100vh",
+              overflow: "hidden",
             }}
           >
+            {/* Vidéo en mode sombre */}
+            {mode === "dark" && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  width: "100%",
+                  height: "100%",
+                }}
+              >
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "fill",
+                  }}
+                >
+                  <source src="/robot-background-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </Box>
+            )}
+
+            {/* Robot visible dans tous les modes */}
             <Box
               sx={{
                 position: "absolute",
-                right: "45%", // Décalage du robot
-                bottom: "-100px", // Ajustement vertical
-                transform: "scale(1.5)", // Agrandissement du robot
+                top: "50%",
+                right: "50%",
+                transform: "translate(50%, -50%)",
+                zIndex: 1, // Place le robot au-dessus de la vidéo
               }}
             >
               <Image
-                src="/Vaultly.svg" // Remplacez par l'image du robot
+                src="/Vaultly.svg"
                 alt="Robot"
-                width={400}
-                height={400}
+                width={500}
+                height={500}
                 style={{ objectFit: "contain" }}
               />
             </Box>
