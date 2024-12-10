@@ -48,7 +48,7 @@ export default function HeroSection() {
             variant="h2"
             sx={{
               fontWeight: "bold",
-              fontSize: isMobile ? "3rem" : "5rem", // Taille ajustée pour mobile
+              fontSize: isMobile ? "3rem" : "6rem", // Taille ajustée pour mobile
               lineHeight: 1.2,
               textAlign: isMobile ? "center" : "left", // Texte centré sur mobile
               marginBottom: "1.5rem",
@@ -60,7 +60,7 @@ export default function HeroSection() {
               style={{
                 display: "inline-block", // Pour aligner correctement
                 color: "#6a98c9",
-                fontSize: isMobile ? "3.5rem" : "5.5rem", // Plus grand pour "some noise?"
+                fontSize: isMobile ? "3.5rem" : "6.5rem", // Plus grand pour "some noise?"
               }}
             >
               some noise?
